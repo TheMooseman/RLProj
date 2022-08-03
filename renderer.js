@@ -7,8 +7,13 @@ const select = document.querySelector('select');
 select.onchange = (e) => {
     const selectedVals = [...e.target.selectedOptions].map(o => o.value)
     selectedVals.forEach(element => {
+        //console.log(element.lastModified);
         replaySelected(element);
     });
+}
+
+function call(date){
+
 }
 
 function GetFolderPath(){
@@ -23,6 +28,11 @@ function itemSelected(chosen){
     console.log(chosen);
 }
 
+function replaySelected(replay){
+    if(replay){
+        window.api.replayInfo(replay);
+    }
+}
 
 /* API/PRELOAD FUNCS */
 
@@ -44,8 +54,6 @@ window.api.addReplay((data) => {
     //console.log(data);
 })
 
-function replaySelected(replay){
-    if(replay){
-        window.api.apiParse(replay);
-    }
-}
+window.api.retReplayInfo((data) => {
+    console.log(data);
+})

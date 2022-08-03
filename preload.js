@@ -4,25 +4,36 @@ const {
 } = require("electron");
 
 const API = {
+    
+    // TO INDEX
+    openDialog: () => {
+        ipcRenderer.send('openMyDialog')
+    },
+
+    listReplays: (dirPath) => ipcRenderer.send('listReplays', dirPath),
+
+    replayInfo: (replay) => {
+        ipcRenderer.send('getReplayInfo', replay);
+    },
+
+
+    // TO RENDERER
     onRetPath: (callback) => {
         ipcRenderer.on("retPath", (event, args) => {
             callback(args);
         })
     },
-    openDialog: () => {
-        ipcRenderer.send('openMyDialog')
+
+    retReplayInfo: (callback) => {
+        ipcRenderer.on('retReplayInfo', (event, args) => {
+            callback(args);
+        })
     },
 
     addReplay: (callback) => {
         ipcRenderer.on("addReplay", (event, args) => {
             callback(args);
         })
-    },
-
-    listReplays: (dirPath) => ipcRenderer.send('listReplays', dirPath),
-
-    apiParse: (replay) => {
-        ipcRenderer.send('parseReplay', replay)
     },
 
 }
