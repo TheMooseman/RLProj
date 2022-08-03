@@ -1,0 +1,79 @@
+highlight{
+    text-emphasis-color: #FF4C29;
+}
+
+.mainwrapper{
+    background-color: #082032;
+    height: 5%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    background-color: #082032;
+    height: 95%;
+}
+
+.replayObj{
+    text-align: left;
+    align-self: left;
+    align-content: left;
+    padding: 5px;
+    min-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #2C394B;
+    color: white;
+}
+
+.replayObj:hover{
+    color:#FF4C29;
+    background-color: #96a0ad;
+    height: 50%;
+}
+
+.folderDiv{
+    align-content: left;
+    align-items: left;
+    min-height: 95%;
+    max-height: 95%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+nav{
+    align-items: left;
+    height: 100%;
+    max-height: 100%;
+    max-width: 33%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+nav select{
+    align-self: left;
+    height: 100%;
+    line-height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: #2C394B;
+}
+
+.foldLoc{
+    text-decoration-color: white;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}

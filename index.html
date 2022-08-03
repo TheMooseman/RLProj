@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Replay Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mainwrapper">
+        <button class="inlinedisplay margin20" id="folderchooser">Replay Path</button>
+        <input id="selectedFolder" class="foldLoc" type="text"
+            placeholder="Selected folder paths here..." disabled>
+        
+    </div>
+
+    <div class="folderDiv">
+        <nav>
+            <select id="replayList" multiple size="100%">
+
+            </select>
+        </nav>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
