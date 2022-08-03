@@ -63,7 +63,6 @@ app.whenReady().then(() => {
     ipcMain.on('openMyDialog', () => {
         dialog.showOpenDialog({properties: ['openDirectory',]})
         .then(result =>{
-            //console.log(result.filePaths);
             pathLoc = result.filePaths[0];
             win.webContents.send('retPath', result.filePaths[0]);
         }).catch(err => {
@@ -111,20 +110,12 @@ app.whenReady().then(() => {
     });
 
     ipcMain.on('getReplayInfo', (event, args) => {
-        
-        
-        //console.log(retDate);
 
-        //let ret = [args, retDate];
-        //console.log(ret);
-        //win.webContents.send('retReplayInfo', args);
     });
 });
 
 function getDateOnReplay(replay){
-    //let retDate;
-    
-    //return retDate;
+
 }
 
 function monthFromNum(month){

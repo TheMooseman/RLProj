@@ -6,7 +6,6 @@ const select = document.querySelector('select');
 select.onchange = (e) => {
     const selectedVals = [...e.target.selectedOptions].map(o => o.value)
     selectedVals.forEach(element => {
-        //console.log(element.lastModified);
         replaySelected(element);
     });
 }
@@ -44,9 +43,8 @@ window.api.addReplay((data) => {
     newReplay.title = data[1];
     newReplay.textContent = data[0];
     newReplay.setAttribute('class', 'replayObj');
-
     replayList.appendChild(newReplay);
-    //window.api.replayInfo(data);
+
     //console.log(data);
 })
 
