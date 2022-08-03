@@ -1,0 +1,1 @@
+This is a local replay manager for rocket league.  It's not fully functional right now but will eventually allow you to copy replay files to your clipboard for sharing, adding notes to replays, and exporting a zip that contains the notes and the replay in a single file to send to others.
