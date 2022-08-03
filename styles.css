@@ -19,14 +19,21 @@ body{
     height: 95%;
 }
 
+.replayList{
+    width: 100%;
+    white-space: pre-wrap;
+    float: left;
+}
+
 .replayObj{
     text-align: left;
     align-self: left;
     align-content: left;
+    white-space: pre-wrap;
+    height: 50px;
     padding: 5px;
-    min-width: 100%;
+    width: 100%;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
     background-color: #2C394B;
     color: white;
@@ -35,12 +42,16 @@ body{
 .replayObj:hover{
     color:#FF4C29;
     background-color: #96a0ad;
-    height: 50%;
+    height: 75px;
+}
+
+#replayDiv{
+    float: left;
+    width: 50%;
 }
 
 .folderDiv{
     align-content: left;
-    align-items: left;
     min-height: 95%;
     max-height: 95%;
     overflow: hidden;
@@ -50,11 +61,11 @@ body{
 nav{
     align-items: left;
     height: 100%;
-    max-height: 100%;
-    max-width: 33%;
+    width: 100%;
     overflow: hidden;
     overflow-y: scroll;
 }
+
 
 nav select{
     align-self: left;
@@ -62,6 +73,7 @@ nav select{
     line-height: 100%;
     max-height: 100%;
     max-width: 100%;
+    white-space: pre-wrap;
     overflow: hidden;
     overflow-y: scroll;
     background-color: #2C394B;
@@ -69,11 +81,33 @@ nav select{
 
 .foldLoc{
     text-decoration-color: white;
-    white-space: nowrap;
+    white-space: pre-wrap;
     text-overflow: ellipsis;
     color: white;
 }
 
+.notesPane{
+    margin-left: 25%;
+    background: blue;
+    height: 100%;
+    width: 75%;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+
+    outline: none;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+}
+
 ::-webkit-scrollbar{
     display: none;
+}
+
+body{
+    height: 100%;
+    width: 100%;
 }

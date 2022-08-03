@@ -71,52 +71,60 @@ app.whenReady().then(() => {
           })
     });
 
-    ipcMain.on('listReplays', (event, args) => {
+    ipcMain.handle('listReplays', (event, args) => {
+        let replays = [];
         fs.readdir(args, function (err, files) {
             if(err){
                 return console.log('failed to read files');
             }
             files.forEach(function (file){
                 if(path.extname(file).toLowerCase() === '.replay'){
-                    win.webContents.send('addReplay', file);
+                    let locArgs = '/' + file;
+                    var joinPath = pathLoc.concat(locArgs);
+                    let retDate;
+                    let info = fs.statSync(joinPath);
+                    let date_ob = info.mtime;
+                    let date = ("0" + date_ob.getDate()).slice(-2);
+                    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+                    let year = date_ob.getFullYear();
+                    let hours = date_ob.getHours();
+                    let minutes = date_ob.getMinutes();
+                    let seconds = date_ob.getSeconds();
+
+                    if(minutes < 10){
+                        minutes = "0" + minutes;
+                    }
+                    if(hours > 12){
+                        hours = hours - 12;
+                        minutes = minutes + "pm";
+                    }else{
+                        minutes = minutes + "am";
+                    }
+                    retDate = (hours + ":" + minutes + " " + monthFromNum(month-1) + " " + date + " " + year);
+
+                    let replayObj = [retDate, file];
+                    win.webContents.send('addReplay', replayObj);
                 }
             })
         })
+        return replays;
     });
 
     ipcMain.on('getReplayInfo', (event, args) => {
-        args = '/' + args;
-        var joinPath = pathLoc.concat(args);
-        getDateOnReplay(joinPath);
         
+        
+        //console.log(retDate);
+
+        //let ret = [args, retDate];
+        //console.log(ret);
+        //win.webContents.send('retReplayInfo', args);
     });
 });
 
 function getDateOnReplay(replay){
-    fs.stat(replay, (err, stats) => {
-        if(err){
-            throw err;
-        }
-
-        let date_ob = stats.mtime;
-        let date = ("0" + date_ob.getDate()).slice(-2);
-        let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-        let year = date_ob.getFullYear();
-        let hours = date_ob.getHours();
-        let minutes = date_ob.getMinutes();
-        let seconds = date_ob.getSeconds();
-
-        if(minutes < 10){
-            minutes = "0" + minutes;
-        }
-        if(hours > 12){
-            hours = hours - 12;
-            minutes = minutes + "pm";
-        }else{
-            minutes = minutes + "am";
-        }
-        win.webContents.send('retReplayInfo', hours + ":" + minutes + " " + monthFromNum(month-1) + " " + date + " " + year);
-    })
+    //let retDate;
+    
+    //return retDate;
 }
 
 function monthFromNum(month){

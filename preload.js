@@ -10,7 +10,7 @@ const API = {
         ipcRenderer.send('openMyDialog')
     },
 
-    listReplays: (dirPath) => ipcRenderer.send('listReplays', dirPath),
+    listReplays: (dirPath) => ipcRenderer.invoke('listReplays', dirPath),
 
     replayInfo: (replay) => {
         ipcRenderer.send('getReplayInfo', replay);

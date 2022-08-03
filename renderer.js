@@ -1,4 +1,3 @@
-
 const setFolderButton = document.getElementById('folderchooser');
 const folderInput = document.getElementById('selectedFolder');
 const selectMenu = document.getElementById('replayList');
@@ -10,10 +9,6 @@ select.onchange = (e) => {
         //console.log(element.lastModified);
         replaySelected(element);
     });
-}
-
-function call(date){
-
 }
 
 function GetFolderPath(){
@@ -30,7 +25,7 @@ function itemSelected(chosen){
 
 function replaySelected(replay){
     if(replay){
-        window.api.replayInfo(replay);
+        //window.api.replayInfo(replay);
     }
 }
 
@@ -44,16 +39,17 @@ window.api.onRetPath((data) => {
 window.api.addReplay((data) => {
     let replayList = document.getElementById('replayList');
     let newReplay = document.createElement('option');
-    newReplay.appendChild(document.createTextNode(data));
-    newReplay.text = data;
-    newReplay.textContent = data;
+    newReplay.appendChild(document.createTextNode(data[0]));
+    newReplay.text = data[0];
+    newReplay.title = data[1];
+    newReplay.textContent = data[0];
     newReplay.setAttribute('class', 'replayObj');
 
     replayList.appendChild(newReplay);
-    
+    //window.api.replayInfo(data);
     //console.log(data);
 })
 
 window.api.retReplayInfo((data) => {
-    console.log(data);
+    //console.log(data);
 })
